@@ -7,6 +7,7 @@ import com.travelassistant.london.marfo.londontravelassistant.BuildConfig;
 import com.travelassistant.london.marfo.londontravelassistant.rpc.api.TFLServerApi;
 import com.travelassistant.london.marfo.londontravelassistant.rpc.responses.ArrivalResponse;
 import com.travelassistant.london.marfo.londontravelassistant.rpc.responses.RouteSequence;
+import com.travelassistant.london.marfo.londontravelassistant.rpc.responses.AirQuality;
 import com.travelassistant.london.marfo.londontravelassistant.ui.home.RequestStationsListener;
 
 import java.util.List;
