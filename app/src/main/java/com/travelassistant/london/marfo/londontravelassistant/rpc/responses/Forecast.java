@@ -4,29 +4,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.List;
 
-//@JsonInclude(JsonInclude.Include.NON_NULL)
-//@JsonPropertyOrder({
-//        "id",
-//        "operationType",
-//        "vehicleId",
-//        "naptanId",
-//        "stationName",
-//        "lineId",
-//        "lineName",
-//        "platformName",
-//        "direction",
-//        "bearing",
-//        "destinationNaptanId",
-//        "destinationName",
-//        "timestamp",
-//        "timeToStation",
-//        "currentLocation",
-//        "towards",
-//        "expectedArrival",
-//        "timeToLive",
-//        "modeName",
-//        "timing"
-//})
 public class Forecast {
 
 	@JsonProperty("$id")
