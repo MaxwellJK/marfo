@@ -17,6 +17,7 @@ android {
         buildConfigField "String", "TFL_BASE_URL", "\"https://api.tfl.gov.uk/\""
         buildConfigField "String", "TFL_LINE_URL", "\"https://api.tfl.gov.uk/Line/{id}/Route/Sequence/{direction}/\""
         buildConfigField "String", "TFL_ARRIVAL", "\"https://api.tfl.gov.uk/StopPoint/{id}/Arrivals\""
+        buildConfigField "String", "TFL_AIR_QUALITY", "\"https://api.tfl.gov.uk/AirQuality\""
     }
     buildTypes {
         release {
