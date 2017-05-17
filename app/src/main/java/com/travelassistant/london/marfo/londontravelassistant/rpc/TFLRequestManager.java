@@ -34,11 +34,11 @@ public class TFLRequestManager {
     }
 
     public void getStatusLondonBuses(String id, String direction, final RequestStationsListener listener) {
-        call = tflServerApi.getStatusLondonBuses(id, direction, "Reqular", true, BuildConfig.TFL_APP_ID, BuildConfig.TFL_APP_KEY);
+        call = tflServerApi.getStatusLondonBuses(id, direction, "Regular", true, BuildConfig.TFL_APP_ID, BuildConfig.TFL_APP_KEY);
         call.enqueue(new Callback<RouteSequence>() {
             @Override
             public void onResponse(Call<RouteSequence> call, Response<RouteSequence> response) {
-                Log.d(TAG, "Call is successfull: " + response.isSuccessful());
+                Log.d(TAG, "Call is successful: " + response.isSuccessful());
                 if (response.body() != null) {
                     listener.onRequestStationSucceded(response.body().stations);
                 }
@@ -47,17 +47,19 @@ public class TFLRequestManager {
 
             @Override
             public void onFailure(Call<RouteSequence> call, Throwable t) {
-                Log.d(TAG, "Call is NOT successfull / Error message: " + t.getMessage());
+                Log.d(TAG, "Call is NOT successful / Error message: " + t.getMessage());
             }
         });
     }
 
-    public void getBusArrivalTimes(@NonNull String ids, String stopPointId, final RequestStationsListener listener) {
-        call1 = tflServerApi.getBusArrivalTimes(ids, stopPointId, BuildConfig.TFL_APP_ID, BuildConfig.TFL_APP_KEY);
+    public void getBusArrivalTimes(@NonNull String id, final RequestStationsListener listener) {
+        call1 = tflServerApi.getBusArrivalTimes(id, BuildConfig.TFL_APP_ID, BuildConfig.TFL_APP_KEY);
         call1.enqueue(new Callback<List<ArrivalResponse>>() {
             @Override
             public void onResponse(Call<List<ArrivalResponse>> call, Response<List<ArrivalResponse>> response) {
-                listener.onArrivalTimesReceived();
+                if (response.isSuccessful()) {
+                    listener.onArrivalTimesReceived(response.body());
+                }
             }
 
             @Override

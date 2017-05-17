@@ -13,6 +13,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.travelassistant.london.marfo.londontravelassistant.LondonTravelAssistantApplication;
 import com.travelassistant.london.marfo.londontravelassistant.R;
 import com.travelassistant.london.marfo.londontravelassistant.rpc.TFLRequestManager;
+import com.travelassistant.london.marfo.londontravelassistant.rpc.responses.ArrivalResponse;
 import com.travelassistant.london.marfo.londontravelassistant.rpc.responses.Station;
 
 import java.util.List;
@@ -25,8 +26,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     TFLRequestManager tflRequestManager;
 
     private GoogleMap mMap;
-
-    private LatLng londonLatLng;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +44,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     private void doStuffsInBackground() {
         tflRequestManager.getStatusLondonBuses("139", "inbound", this);
-        tflRequestManager.getBusArrivalTimes("139", "490G00006979", this);
+        tflRequestManager.getBusArrivalTimes("490005311N2", this); /*490G00006979*/
     }
 
 
@@ -79,7 +78,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     }
 
     @Override
-    public void onArrivalTimesReceived() {
+    public void onArrivalTimesReceived(List<ArrivalResponse> arrivalResponseList) {
 
     }
 }

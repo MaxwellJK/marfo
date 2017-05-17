@@ -6,15 +6,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * Created by martafoderaro on 07/05/2017.
  */
 
-//@JsonInclude(JsonInclude.Include.NON_NULL)
-//@JsonPropertyOrder({
-//        "countdownServerAdjustment",
-//        "source",
-//        "insert",
-//        "read",
-//        "sent",
-//        "received"
-//})
 public class Timing {
 
     @JsonProperty("$type")
@@ -39,15 +30,6 @@ public class Timing {
     public Timing() {
     }
 
-    /**
-     *
-     * @param countdownServerAdjustment
-     * @param sent
-     * @param source
-     * @param read
-     * @param received
-     * @param insert
-     */
     public Timing(String countdownServerAdjustment, String source, String insert, String read, String sent, String received) {
         super();
         this.countdownServerAdjustment = countdownServerAdjustment;

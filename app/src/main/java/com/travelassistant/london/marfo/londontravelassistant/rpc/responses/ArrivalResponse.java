@@ -1,30 +1,32 @@
 package com.travelassistant.london.marfo.londontravelassistant.rpc.responses;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
-//@JsonInclude(JsonInclude.Include.NON_NULL)
-//@JsonPropertyOrder({
-//        "id",
-//        "operationType",
-//        "vehicleId",
-//        "naptanId",
-//        "stationName",
-//        "lineId",
-//        "lineName",
-//        "platformName",
-//        "direction",
-//        "bearing",
-//        "destinationNaptanId",
-//        "destinationName",
-//        "timestamp",
-//        "timeToStation",
-//        "currentLocation",
-//        "towards",
-//        "expectedArrival",
-//        "timeToLive",
-//        "modeName",
-//        "timing"
-//})
+@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonPropertyOrder({
+        "id",
+        "operationType",
+        "vehicleId",
+        "naptanId",
+        "stationName",
+        "lineId",
+        "lineName",
+        "platformName",
+        "direction",
+        "bearing",
+        "destinationNaptanId",
+        "destinationName",
+        "timestamp",
+        "timeToStation",
+        "currentLocation",
+        "towards",
+        "expectedArrival",
+        "timeToLive",
+        "modeName",
+        "timing"
+})
 public class ArrivalResponse {
 
     @JsonProperty("$type")
@@ -77,29 +79,6 @@ public class ArrivalResponse {
     public ArrivalResponse() {
     }
 
-    /**
-     *
-     * @param vehicleId
-     * @param direction
-     * @param expectedArrival
-     * @param modeName
-     * @param towards
-     * @param destinationName
-     * @param timeToLive
-     * @param currentLocation
-     * @param timestamp
-     * @param id
-     * @param timeToStation
-     * @param platformName
-     * @param operationType
-     * @param destinationNaptanId
-     * @param lineName
-     * @param bearing
-     * @param timing
-     * @param stationName
-     * @param naptanId
-     * @param lineId
-     */
     public ArrivalResponse(String id, Integer operationType, String vehicleId, String naptanId, String stationName, String lineId, String lineName, String platformName, String direction, String bearing, String destinationNaptanId, String destinationName, String timestamp, Integer timeToStation, String currentLocation, String towards, String expectedArrival, String timeToLive, String modeName, Timing timing) {
         super();
         this.id = id;
