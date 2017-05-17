@@ -31,10 +31,6 @@ public class Forecast {
 	@JsonProperty("forecastText")
 	private String forecastText;
 
-    /**
-     * No args constructor for use in serialization
-     *
-     */
     public Forecast() {
     }
 
