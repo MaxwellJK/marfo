@@ -35,10 +35,10 @@ public class TFLRequestManager {
     }
 
     public void getStatusLondonBuses(String id, String direction, final RequestStationsListener listener) {
-        call = tflServerApi.getStatusLondonBuses(id, direction, "Reqular", true, BuildConfig.TFL_APP_ID, BuildConfig.TFL_APP_KEY);
-        call.enqueue(new Callback<RouteSequence>() {
+        call = tflServerApi.getAirQualityStatus(BuildConfig.TFL_APP_ID, BuildConfig.TFL_APP_KEY);
+        call.enqueue(new Callback<AirQuality>() {
             @Override
-            public void onResponse(Call<RouteSequence> call, Response<RouteSequence> response) {
+            public void onResponse(Call<AirQuality> call, Response<AirQuality> response) {
                 Log.d(TAG, "Call is successfull: " + response.isSuccessful());
                 if (response.body() != null) {
                     listener.onRequestStationSucceded(response.body().stations);
@@ -47,7 +47,7 @@ public class TFLRequestManager {
             }
 
             @Override
-            public void onFailure(Call<RouteSequence> call, Throwable t) {
+            public void onFailure(Call<AirQuality> call, Throwable t) {
                 Log.d(TAG, "Call is NOT successfull / Error message: " + t.getMessage());
             }
         });
