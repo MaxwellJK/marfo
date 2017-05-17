@@ -7,6 +7,7 @@ import com.travelassistant.london.marfo.londontravelassistant.BuildConfig;
 import com.travelassistant.london.marfo.londontravelassistant.rpc.api.TFLServerApi;
 import com.travelassistant.london.marfo.londontravelassistant.rpc.responses.ArrivalResponse;
 import com.travelassistant.london.marfo.londontravelassistant.rpc.responses.RouteSequence;
+import com.travelassistant.london.marfo.londontravelassistant.rpc.responses.AirQuality;
 import com.travelassistant.london.marfo.londontravelassistant.ui.home.RequestStationsListener;
 
 import java.util.List;
@@ -27,6 +28,8 @@ public class TFLRequestManager {
 
     private Call<List<ArrivalResponse>> call1;
 
+    private Call<AirQuality> call2;
+    
     private TFLServerApi tflServerApi;
 
     public TFLRequestManager(Retrofit retrofit) {
@@ -63,6 +66,25 @@ public class TFLRequestManager {
             @Override
             public void onFailure(Call<List<ArrivalResponse>> call, Throwable t) {
 
+            }
+        });
+    }
+    
+    public void getAirQualityStatus(String id, String direction, final RequestStationsListener listener) {
+    	call2 = tflServerApi.getAirQualityStatus(BuildConfig.TFL_APP_ID, BuildConfig.TFL_APP_KEY);
+    	call2.enqueue(new Callback<AirQuality>() {
+            @Override
+            public void onResponse(Call<AirQuality> call, Response<AirQuality> response) {
+                Log.d(TAG, "Call is successfull: " + response.isSuccessful());
+                if (response.body() != null) {
+                    listener.onRequestStationSucceded(response.body().stations);
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<AirQuality> call, Throwable t) {
+                Log.d(TAG, "Call is NOT successfull / Error message: " + t.getMessage());
             }
         });
     }
